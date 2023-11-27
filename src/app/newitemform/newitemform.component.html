@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Title form</h2>
+    <div class="col-lg-6">
+        <form [formGroup]="mainForm">
+            <div class="form-group">
+                <label>Select Item</label>
+                <select id="selectBox" 
+                    class="form-control" 
+                    formControlName="itemSelect"
+                    (change)="onItemSelectChange(mainForm)"
+                >
+                    <option value="">Select item</option>
+                    <option *ngFor="let task of itemDataList" [value]="task.id">{{task.title}}</option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <label>Enter Title</label>
+                <input type="text" id="inputfield" class="form-control" formControlName="titleInput"/>
+
+            </div>
+
+            <button type="button" class="btn btn-primary mt-4" (click)="addToForm()">Submit </button>
+
+            <div class="mt-4">
+                <ul class="list-group" *ngFor="let data of formArray; let i = index">
+                    <li class="list-group-item">{{data.value.title}}</li>
+                </ul>
+
+            </div>
+
+        </form>
+    </div>
+</div>
